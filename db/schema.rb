@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215084405) do
+ActiveRecord::Schema.define(version: 20161215092756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,10 +36,16 @@ ActiveRecord::Schema.define(version: 20161215084405) do
   end
 
   create_table "sales", force: :cascade do |t|
-    t.decimal  "amount",     precision: 10, scale: 2
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.decimal  "amount",         precision: 10, scale: 2
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.integer  "agent_id"
+    t.integer  "destination_id"
+    t.index ["agent_id"], name: "index_sales_on_agent_id", using: :btree
+    t.index ["destination_id"], name: "index_sales_on_destination_id", using: :btree
   end
 
   add_foreign_key "agents", "offices"
+  add_foreign_key "sales", "agents"
+  add_foreign_key "sales", "destinations"
 end
