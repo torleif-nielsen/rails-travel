@@ -1,29 +1,48 @@
-<%= form_for(agent) do |f| %>
-  <% if agent.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(agent.errors.count, "error") %> prohibited this agent from being saved:</h2>
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for(agent) do |f| %>
+      <% if agent.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(agent.errors.count, "error") %> prohibited this agent from being saved:</h2>
 
-      <ul>
-      <% agent.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% agent.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
+      
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="input-group">
+            <span class="input-group-addon">Name</span>
+            <%= f.text_field :name, 
+                class: "form-control", 
+                placeholder: "Name" %>
+          </div>
+
+          <br>
+
+          <div class="input-group">
+            <span class="input-group-addon">Office</span>
+            <%= f.collection_select(:office_id, Office.all, :id, :name, 
+                { :prompt => 'Select an Office', 
+                  :selected => agent.office_id }, 
+                { class: 'form-control' }) %>
+          </div>
+        </div>
+      
+      <div class="panel-footer">
+        <div class="actions">
+          <% if action_name == "new" %>
+              <%= f.submit "Create Agent", class: "btn btn-success" %>
+            <% else %>
+              <%= f.submit "Update Agent", class: "btn btn-success" %>
+            <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :office_id %>
-    <%= f.collection_select(:office_id, Office.all, :id, :name, 
-        { :prompt => 'Select an Office', :selected => agent.office_id }, 
-        { class: '' }) %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

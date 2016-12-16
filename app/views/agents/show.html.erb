@@ -1,14 +1,45 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <p id="notice"><%= notice %></p>
+    </div>
+  </div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @agent.name %>
-</p>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Name
+        </div>
+        <div class="panel-body">
+          <%= @agent.name %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Office Location
+        </div>
+        <div class="panel-body">
+          <%= @agent.office.name %>
+        </div>
+        <div class="panel-footer">
+          <%= link_to 'Office Details', @agent.office,
+              class: "btn btn-sm btn-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Office:</strong>
-  <%= @agent.office.name %>
-</p>
-
-<%= link_to 'Edit', edit_agent_path(@agent) %> |
-<%= link_to 'Back', agents_path %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="btn-toolbar" role="toolbar">
+        <%= link_to 'Edit', edit_agent_path(@agent),
+            class: "btn btn-warning" %> 
+        <%= link_to 'Back', agents_path,
+            class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

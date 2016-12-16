@@ -1,6 +1,24 @@
-<h1>Editing Agent</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Editing Agent</h1>
+    </div>
+  </div>
 
-<%= render 'form', agent: @agent %>
+  <hr>
 
-<%= link_to 'Show', @agent %> |
-<%= link_to 'Back', agents_path %>
+  <%= render 'form', agent: @agent %>
+
+  <hr>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="btn-toolbar" role="toolbar">
+        <%= link_to 'Show', @agent,
+            class: "btn btn-info" %>
+        <%= link_to 'Back', agents_path,
+            class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
