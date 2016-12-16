@@ -1,6 +1,7 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_agents, only: [:new, :edit]
+  before_action :set_destinations, only: [:new, :edit]
   # GET /sales
   # GET /sales.json
   def index
@@ -10,8 +11,8 @@ class SalesController < ApplicationController
   # GET /sales/1
   # GET /sales/1.json
   def show
-  end
 
+  end
   # GET /sales/new
   def new
     @sale = Sale.new
@@ -67,8 +68,16 @@ class SalesController < ApplicationController
       @sale = Sale.find(params[:id])
     end
 
+    def set_agents
+      @agents = Agent.all.order(:name)
+    end
+
+    def set_destinations
+      @destinations = Destination.all.order(:name)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_params
-      params.require(:sale).permit(:amount)
+      params.require(:sale).permit(:amount, :agent_id, :destination_id)
     end
 end

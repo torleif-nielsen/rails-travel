@@ -16,6 +16,20 @@
     <%= f.text_field :amount %>
   </div>
 
+  <div class="field">
+    <%= f.label :agent_id %>
+    <%= f.collection_select(:agent_id, @agents, :id, :name,
+        { :prompt => 'Select an Agent', :selected => sale.agent_id },
+        { class: '' }) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :destination_id %>
+    <%= f.collection_select(:destination_id, @destinations, :id, :name,
+        { :prompt => 'Select a Destination', :selected => sale.destination_id },
+        { class: '' }) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
