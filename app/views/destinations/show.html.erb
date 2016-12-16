@@ -1,9 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @destination.name %>
-</p>
-
-<%= link_to 'Edit', edit_destination_path(@destination) %> |
-<%= link_to 'Back', destinations_path %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          Destination
+        </div>
+        <div class="panel-body">
+          <%= @destination.name %>
+        </div>
+      </div>
+      
+      <div class="btn-toolbar" role="toolbar">
+        <%= link_to 'Edit', edit_destination_path(@destination),
+            class: "btn btn-warning" %> 
+        <%= link_to 'Back', destinations_path,
+            class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

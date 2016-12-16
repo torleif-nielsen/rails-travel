@@ -1,5 +1,22 @@
-<h1>New Destination</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>New Destination</h1>
+    </div>
+  </div>
 
-<%= render 'form', destination: @destination %>
+  <hr>
 
-<%= link_to 'Back', destinations_path %>
+  <%= render 'form', destination: @destination %>
+
+  <hr>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="btn-toolbar" role="toolbar">
+        <%= link_to 'Back', destinations_path,
+            class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
