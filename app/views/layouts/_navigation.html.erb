@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#rails-nav-bar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Rails Travel", root_path, class: "navbar-brand" %>
+    </div>
+
+    <div class="collapse navbar-collapse" id="rails-nav-bar">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Sales", sales_path %></li>
+        <li><%= link_to "Agents", agents_path %></li>
+        <li><%= link_to "Offices", offices_path %></li>
+        <li><%= link_to "Destinations", destinations_path %></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
