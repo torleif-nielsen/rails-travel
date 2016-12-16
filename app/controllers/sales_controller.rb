@@ -6,6 +6,11 @@ class SalesController < ApplicationController
   # GET /sales.json
   def index
     @sales = Sale.all
+
+    respond_to do |format|
+      format.html {}
+      format.js { render file: "sales/filter_sales.js.erb" }
+    end
   end
 
   # GET /sales/1

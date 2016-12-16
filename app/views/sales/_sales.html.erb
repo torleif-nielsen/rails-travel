@@ -1,0 +1,37 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Agent</th>
+      <th>Amount</th>
+      <th>Destination</th>
+      <th>Date Created</th>
+      <th>Actions</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% sales.each do |sale| %>
+      <tr>
+        <td><%= sale.agent.name %></td>
+        <td><%= number_to_currency(sale.amount) %></td>
+        <td><%= sale.destination.name %></td>
+        <td><%= sale.created_at.strftime("%B %d, %Y") %></td>
+        <td>
+        <%= link_to 'Show', sale,
+            class: "btn btn-sm btn-info" %>
+        </td>
+        <td>
+        <%= link_to 'Edit', edit_sale_path(sale),
+            class: "btn btn-sm btn-warning" %>
+        </td>
+        <td>
+        <%= link_to 'Destroy', sale, 
+            method: :delete, 
+            data: { confirm: 'Are you sure?' },
+            class: "btn btn-sm btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

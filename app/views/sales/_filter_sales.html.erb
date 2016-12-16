@@ -1,0 +1,63 @@
+<div class="form-inline">
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">Agent</span>
+      <%= collection_select(:sale, :agent_id, 
+          Agent.all.order(:name), :id, :name,
+          { include_blank: true },
+          { class: 'form-control', id: "agent_select" }) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">Destination</span>
+      <%= collection_select(:sale, :destination_id, 
+          Destination.all.order(:name), :id, :name,
+          { include_blank: true },
+          { class: 'form-control', id: "destination_select" }) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">Min Amount $</span>
+      <%= number_field(:sale, :amount_min,
+          { class: 'form-control', id: "amount_min" }) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <span class="input-group-addon">Max Amount $</span>
+      <%= number_field(:sale, :amount_max,
+          { class: 'form-control', id: "amount_max" }) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <%= submit_tag "Search Sales", id: "filter_sales_button", 
+          class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  $("#filter_sales_button").on("click", function() {
+    var ajaxPayload = [];
+
+    // Push the field values onto the payload
+    ajaxPayload.push($("#agent_select").find(":selected").text());
+    ajaxPayload.push($("#destination_select").find(":selected").text());
+    ajaxPayload.push($("#amount_min").val());
+    ajaxPayload.push($("#amount_max").val());
+
+    //Fire the AJAX request!
+    $.ajax({
+      url: "/sales",
+      type: "GET",
+      dataType: "script",
+      data: {
+        sales_filter: ajaxPayload
+      }
+    })
+  });
+</script>
