@@ -1,8 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Agent:</strong>
+  <%= @sale.agent.name %>
+</p>
+<p>
   <strong>Amount:</strong>
   <%= number_to_currency(@sale.amount) %>
+</p>
+<p>
+  <strong>Destination:</strong>
+  <%= @sale.destination.name %>
 </p>
 
 <%= link_to 'Edit', edit_sale_path(@sale) %> |

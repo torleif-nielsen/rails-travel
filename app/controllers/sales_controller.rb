@@ -1,7 +1,7 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
-  before_action :set_agents, only: [:new, :edit]
-  before_action :set_destinations, only: [:new, :edit]
+  before_action :set_agents, only: [:new, :edit, :create]
+  before_action :set_destinations, only: [:new, :edit, :create]
   # GET /sales
   # GET /sales.json
   def index
