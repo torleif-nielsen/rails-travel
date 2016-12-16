@@ -7,6 +7,22 @@ class SalesController < ApplicationController
   def index
     @sales = Sale.all
 
+    if params[:agent_id].present? 
+      @sales = @sales.where(agent_id: params[:agent_id].to_i)
+    end
+
+    if params[:destination_id].present? 
+      @sales = @sales.where(destination_id: params[:destination_id].to_i)
+    end
+
+    if params[:amount_min].present? 
+      @sales = @sales.where("amount > ?", params[:amount_min].to_f)
+    end
+
+    if params[:amount_max].present? 
+      @sales = @sales.where("amount < ?", params[:amount_max].to_f)
+    end
+
     respond_to do |format|
       format.html {}
       format.js { render file: "sales/filter_sales.js.erb" }

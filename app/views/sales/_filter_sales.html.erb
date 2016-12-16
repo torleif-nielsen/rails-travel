@@ -42,21 +42,16 @@
 
 <script type="text/javascript">
   $("#filter_sales_button").on("click", function() {
-    var ajaxPayload = [];
-
-    // Push the field values onto the payload
-    ajaxPayload.push($("#agent_select").find(":selected").text());
-    ajaxPayload.push($("#destination_select").find(":selected").text());
-    ajaxPayload.push($("#amount_min").val());
-    ajaxPayload.push($("#amount_max").val());
-
     //Fire the AJAX request!
     $.ajax({
       url: "/sales",
       type: "GET",
       dataType: "script",
       data: {
-        sales_filter: ajaxPayload
+        agent_id: $("#agent_select").find(":selected").val(),
+        destination_id: $("#destination_select").find(":selected").val(),
+        amount_min: $("#amount_min").val(),
+        amount_max: $("#amount_max").val()
       }
     })
   });
