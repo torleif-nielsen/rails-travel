@@ -1,6 +1,24 @@
-<h1>Editing Office</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Editing Office</h1>
+    </div>
+  </div>
 
-<%= render 'form', office: @office %>
+  <hr>
 
-<%= link_to 'Show', @office %> |
-<%= link_to 'Back', offices_path %>
+  <%= render 'form', office: @office %>
+
+  <hr>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="btn-toolbar" role="toolbar">
+        <%= link_to 'Show', @office,
+            class: "btn btn-info" %>
+        <%= link_to 'Back', offices_path,
+            class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>

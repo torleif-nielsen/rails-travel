@@ -1,22 +1,37 @@
-<%= form_for(office) do |f| %>
-  <% if office.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(office.errors.count, "error") %> prohibited this office from being saved:</h2>
+<div class="row">
+  <div class="col-md-12">
+    <%= form_for(office) do |f| %>
+      <% if office.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(office.errors.count, "error") %> prohibited this office from being saved:</h2>
 
-      <ul>
-      <% office.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% office.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="input-group">
+            <span class="input-group-addon">Location</span>
+            <%= f.text_field :name, 
+                class: "form-control", 
+                placeholder: "Location Name" %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+        <div class="panel-footer">
+          <div class="actions">
+            <% if action_name == "new" %>
+              <%= f.submit "Create Office Location", class: "btn btn-success" %>
+            <% else %>
+              <%= f.submit "Update Office Location", class: "btn btn-success" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

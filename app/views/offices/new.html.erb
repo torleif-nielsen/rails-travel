@@ -1,5 +1,22 @@
-<h1>New Office</h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>New Office</h1>
+    </div>
+  </div>
 
-<%= render 'form', office: @office %>
+  <hr>
 
-<%= link_to 'Back', offices_path %>
+  <%= render 'form', office: @office %>
+
+  <hr>
+  
+  <div class="row">
+    <div class="col-md-12">
+      <div class="btn-toolbar" role="toolbar">
+        <%= link_to 'Back', offices_path,
+            class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</div>
