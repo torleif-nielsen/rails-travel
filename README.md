@@ -19,7 +19,7 @@ There are a few prerequisites for starting an instance of the application, for p
 9. SSH into the booted VM using Vagrant's ssh tool \(`vagrant ssh`\)
 10. Once inside of the VM, change to the `/vagrant` directory \(`cd /vagrant`\)
 11. Confirm for yourself that the directory was mounted properly and the files are there \(`ls` or `ls /vagrant`\)
-12. There is a PostgreSQL store running inside of the VM, and the application expects a PostgreSQL user named `vagrant` with password `vagrant`. Add this user inside of your VM \(sudo -u postgres psql -c "create role vagrant with superuser createdb login password 'vagrant';"\). You will see a line `CREATE ROLE` in response.
+12. There is a PostgreSQL store running inside of the VM, and the application expects a PostgreSQL user named `vagrant` with password `vagrant`. Add this user inside of your VM \(`sudo -u postgres psql -c "create role vagrant with superuser createdb login password 'vagrant';"`\). You will see a line `CREATE ROLE` in response.
 13. Run Bundler to install the dependencies listed in the `Gemfile` \(`bundle install`\), this may take a moment.
 14. Provision the database with the Rails CLI tool \(`rails db:create`\)
 15. Migrate the table schema declarations with the Rails CLI tool \(`rails db:migrate`\)
